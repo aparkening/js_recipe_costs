@@ -1,56 +1,63 @@
 class RecipesController < ApplicationController
-  before_action :require_login
+  # before_action :require_login
 
   # Display all user's recipes
   def index
-    if is_admin?
-      @recipes = Recipe.all
-      @user = User.find_by(id: params[:user_id])
+    recipes = Recipe.all
 
-      # Admin search matches all recipes
-      if params[:search]
-        # If search, find results
-		    @recipes = Recipe.where('name LIKE ?', "%#{params[:search]}%").order('id DESC')
-      end
-    else
-      redirect_non_users      
-      @user = User.find_by(id: params[:user_id])
-
-      if params[:search]
-        # If search, find results
-		    @recipes = Recipe.users_recipes(@user).where('name LIKE ?', "%#{params[:search]}%").order('id DESC')
-      else
-        # Show everything
-        @recipes = @user.recipes.includes(:recipe_ingredients) 
-      end
-
-      # Map ingredient costs
-      @recipe_costs = @recipes.map do |recipe|
-        new_recipe = {}
-
-        new_recipe[:id] = recipe.id
-        new_recipe[:user_id] = recipe.user_id
-        new_recipe[:name] = recipe.name
-        new_recipe[:servings] = recipe.servings
-
-        # Get costs per ingredient
-        new_recipe[:ingredients] = recipe.recipe_ingredients.map { |ingredient| CombinedIngredient.new(ingredient) }
-
-        # Calculate total cost
-        # cost << recipe.total_cost(recipe_ingredients)
-        new_recipe[:total_cost] = recipe.total_cost(new_recipe[:ingredients])
-
-        # Calculate cost per serving
-        # cost << recipe.cost_per_serving(recipe.total_cost(recipe_ingredients)) if recipe.servings
-        new_recipe[:cost_per_serving] = recipe.cost_per_serving(new_recipe[:total_cost]) if recipe.servings
-
-        new_recipe
-      end 
-
-      # binding.pry
-      # @recipes = Recipe.recipes_costs(@user)
-    end
+    render json: RecipeSerializer.new(recipes).serialized_json
   end
+
+
+  #   if is_admin?
+  #     @recipes = Recipe.all
+  #     @user = User.find_by(id: params[:user_id])
+
+  #     # Admin search matches all recipes
+  #     if params[:search]
+  #       # If search, find results
+	# 	    @recipes = Recipe.where('name LIKE ?', "%#{params[:search]}%").order('id DESC')
+  #     end
+  #   else
+  #     redirect_non_users      
+  #     @user = User.find_by(id: params[:user_id])
+
+  #     if params[:search]
+  #       # If search, find results
+	# 	    @recipes = Recipe.users_recipes(@user).where('name LIKE ?', "%#{params[:search]}%").order('id DESC')
+  #     else
+  #       # Show everything
+  #       @recipes = @user.recipes.includes(:recipe_ingredients) 
+  #     end
+
+  #     # Map ingredient costs
+  #     @recipe_costs = @recipes.map do |recipe|
+  #       new_recipe = {}
+
+  #       new_recipe[:id] = recipe.id
+  #       new_recipe[:user_id] = recipe.user_id
+  #       new_recipe[:name] = recipe.name
+  #       new_recipe[:servings] = recipe.servings
+
+  #       # Get costs per ingredient
+  #       new_recipe[:ingredients] = recipe.recipe_ingredients.map { |ingredient| CombinedIngredient.new(ingredient) }
+
+  #       # Calculate total cost
+  #       # cost << recipe.total_cost(recipe_ingredients)
+  #       new_recipe[:total_cost] = recipe.total_cost(new_recipe[:ingredients])
+
+  #       # Calculate cost per serving
+  #       # cost << recipe.cost_per_serving(recipe.total_cost(recipe_ingredients)) if recipe.servings
+  #       new_recipe[:cost_per_serving] = recipe.cost_per_serving(new_recipe[:total_cost]) if recipe.servings
+
+  #       new_recipe
+  #     end 
+
+  #     # binding.pry
+  #     # @recipes = Recipe.recipes_costs(@user)
+  #   end
+  # end
+
 
   # Display user's recipes by ingredient
   def by_ingredient
