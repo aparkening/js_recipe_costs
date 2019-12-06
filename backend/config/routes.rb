@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # Ingredients
   # resources :ingredients
   # post 'ingredients/import'
+  resources :ingredients, only: :index
 
   # Users, with recipes and user_ingredients
   # resources :users do
