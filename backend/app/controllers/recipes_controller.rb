@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   # before_action :require_login
 
-  # Display all user's recipes
+  # Send all recipes
   def index
     recipes = Recipe.all
 
