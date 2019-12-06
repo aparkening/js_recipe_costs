@@ -5,7 +5,6 @@ class Ingredient < ApplicationRecord
   # Relationships
   has_many :recipe_ingredients, dependent: :destroy
   has_many :recipes, through: :recipe_ingredients
-  has_many :flags
 
   # Validations
   validates :name, presence: true, uniqueness: true
