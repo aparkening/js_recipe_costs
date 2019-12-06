@@ -1,6 +1,6 @@
 # Recipe Costs
 
-To profitably price their food, professional kitchens need to know their costs. Recipe Costs makes it easy to see costs for each recipe and each serving. 
+To profitably price their food, professional kitchens need to know their costs. Recipe Costs makes it easy to calculate costs for each recipe and each serving. 
 
 **App Features**
 - Users can log in directly or with their Google account.
