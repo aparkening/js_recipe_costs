@@ -2,9 +2,7 @@ class User < ApplicationRecord
   has_secure_password
 
   # Relationships
-  has_many :categories
   has_many :recipes
-  has_many :flags
   has_many :user_ingredient_costs
   has_many :ingredients, through: :user_ingredient_costs
   
