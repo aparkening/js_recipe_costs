@@ -1,5 +1,5 @@
 class UserIngredientCostsController < ApplicationController
-  before_action :require_login
+  # before_action :require_login
 
   # All records
   def index

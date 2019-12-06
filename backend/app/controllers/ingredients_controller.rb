@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
-  before_action :require_admin, only: [:import]
-  before_action :set_user
+  # before_action :require_admin, only: [:import]
+  # before_action :set_user
 
   # All records
   def index
