@@ -5,7 +5,7 @@ class Api::V1::RecipesController < ApplicationController
   def index
     recipes = Recipe.all
 
-    render json: RecipeSerializer.new(recipes).serialized_json
+    render json: RecipeSerializer.new(recipes).serialized_json, status: 200
   end
 
 

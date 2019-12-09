@@ -6,7 +6,7 @@ class Api::V1::IngredientsController < ApplicationController
   def index
     ingredients = Ingredient.all.order(name: :asc)
 
-    render json: IngredientSerializer.new(ingredients).serialized_json
+    render json: IngredientSerializer.new(ingredients).serialized_json, status: 200
   end
 
 
