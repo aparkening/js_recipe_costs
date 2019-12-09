@@ -5,6 +5,12 @@ class User < ApplicationRecord
   has_many :recipes
   has_many :user_ingredient_costs
   has_many :ingredients, through: :user_ingredient_costs
+
+
+  # Remove recipes and user ingredient costs if user is deleted
+  # has_many :recipes, dependent: :destroy
+  # has_many :user_ingredient_costs, dependent: :destroy
+
   
   # Validations
   validates :name, presence: true, uniqueness: true
