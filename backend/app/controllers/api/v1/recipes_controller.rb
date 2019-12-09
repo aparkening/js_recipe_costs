@@ -77,7 +77,6 @@ class Api::V1::RecipesController < ApplicationController
     render json: RecipeSerializer.new(recipes).serialized_json, status: 200
   end
 
-
   # Display record
   def show
     # redirect_non_users
@@ -113,7 +112,7 @@ class Api::V1::RecipesController < ApplicationController
     end
   end
 
-  # Create new
+  # Create record
   def create
     # redirect_non_users
     user = User.find_by(id: params[:user_id])
