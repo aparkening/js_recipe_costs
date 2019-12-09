@@ -2,10 +2,16 @@ Rails.application.routes.draw do
   # Root
   # root 'application#index'
 
+  namespace :api do
+    namespace :v1 do
+      resources :ingredients, only: :index
+      resources :recipes, only: :index
+    end
+  end
+
   # Ingredients
   # resources :ingredients
   # post 'ingredients/import'
-  resources :ingredients, only: :index
 
   # Users, with recipes and user_ingredients
   # resources :users do
@@ -14,7 +20,6 @@ Rails.application.routes.draw do
   #   post 'recipes/import'
   #   resources :ingredients, controller: 'user_ingredient_costs'
   # end
-  resources :recipes, only: :index
 
   # Session
   # get '/login' => 'sessions#new'
@@ -24,7 +29,4 @@ Rails.application.routes.draw do
   # Google authentication
   # get 'auth/:provider/callback', to: 'sessions#googleAuth'
   # get 'auth/failure', to: redirect('/')
-
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

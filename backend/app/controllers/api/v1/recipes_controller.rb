@@ -1,4 +1,4 @@
-class RecipesController < ApplicationController
+class Api::V1::RecipesController < ApplicationController
   # before_action :require_login
 
   # Send all recipes

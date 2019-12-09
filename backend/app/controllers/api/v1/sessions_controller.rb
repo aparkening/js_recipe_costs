@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class Api::V1::SessionsController < ApplicationController
 
   # Display login form
   def new

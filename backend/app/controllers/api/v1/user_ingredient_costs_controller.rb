@@ -1,4 +1,4 @@
-class UserIngredientCostsController < ApplicationController
+class Api::V1::UserIngredientCostsController < ApplicationController
   # before_action :require_login
 
   # All records
