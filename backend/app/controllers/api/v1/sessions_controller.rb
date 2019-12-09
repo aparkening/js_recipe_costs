@@ -1,9 +1,11 @@
 class Api::V1::SessionsController < ApplicationController
 
   # # Display login form
-  # def new
-  #   @user = User.new
-  # end
+  def new
+    # @user = User.new
+
+    render json: { message: 'New User' }, status: 200
+  end
 
   # Create session
   def create
@@ -11,7 +13,7 @@ class Api::V1::SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       # redirect_to user_path(@user)
-      render json: {session: ingredient.id}, status: 200
+      render json: {user: user.id}, status: 200
     else
       render json: { message: 'User error' }, status: 401
     end
