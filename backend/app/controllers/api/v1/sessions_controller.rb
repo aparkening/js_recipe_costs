@@ -1,27 +1,26 @@
 class Api::V1::SessionsController < ApplicationController
 
-  # Display login form
-  def new
-    @user = User.new
-  end
+  # # Display login form
+  # def new
+  #   @user = User.new
+  # end
 
-  # Log user in
+  # Create session
   def create
-    @user = User.find_by(name: params[:name])
-    if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      redirect_to user_path(@user)
+    user = User.find_by(name: params[:name])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      # redirect_to user_path(@user)
+      render json: {session: ingredient.id}, status: 200
     else
-      flash[:error] = "Credentials don't work. Please check your name and password." 
-      redirect_to login_path
+      render json: { message: 'User error' }, status: 401
     end
   end
 
   # Log user out
   def destroy
     session.clear
-    flash[:notice] = "Successfully logged out"
-    redirect_to root_path
+    render json: {message: 'Logged Out'}, status: 200
   end
 
   # Google Oauth Login
