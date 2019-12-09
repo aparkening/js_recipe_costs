@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     resources :ingredients
     post 'ingredients/import'
 
+    # Session
+    get '/login' => 'sessions#new'
+    post '/login' => 'sessions#create'
+    get '/logout' => 'sessions#destroy'
+
       # Users, with recipes and user_ingredients
       resources :users do
         resources :recipes
@@ -20,10 +25,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # Session
-  # get '/login' => 'sessions#new'
-  # post '/login' => 'sessions#create'
-  # get '/logout' => 'sessions#destroy'
+
 
   # Google authentication
   # get 'auth/:provider/callback', to: 'sessions#googleAuth'
