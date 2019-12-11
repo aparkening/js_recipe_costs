@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :users
   # Root
   root 'application#index'
+
+  devise_for :users,
+              path: '',
+              path_names: {
+                sign_in: 'login',
+                sign_out: 'logout',
+                registration: 'signup'
+              },
+              controllers: {
+                sessions: 'sessions',
+                registrations: 'users'
+              }
 
   namespace :api do
     namespace :v1 do
@@ -12,8 +23,8 @@ Rails.application.routes.draw do
 
     # Session
     # get '/login' => 'sessions#new'
-    post '/login' => 'sessions#create'
-    get '/logout' => 'sessions#destroy'
+    # post '/login' => 'sessions#create'
+    # get '/logout' => 'sessions#destroy'
 
       # Users, with recipes and user_ingredients
       resources :users do
