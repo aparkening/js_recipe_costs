@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     post 'ingredients/import'
 
     # Session
-    get '/login' => 'sessions#new'
+    # get '/login' => 'sessions#new'
     post '/login' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
 
