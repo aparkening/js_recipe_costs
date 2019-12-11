@@ -32,8 +32,8 @@ gem 'measured'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
 
-# Env file
-gem 'dotenv-rails'
+# Use JWT and Devise for authentication
+gem 'devise-jwt', '~> 0.5.9'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
@@ -42,9 +42,14 @@ gem 'rack-cors'
 gem 'fast_jsonapi', '~> 1.6.0', git: 'https://github.com/fast-jsonapi/fast_jsonapi'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Env file
+  gem 'dotenv-rails'
+
+  # Debugging
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
+
+  # Testing via Rspec
   gem 'rspec-rails'
 end
 
