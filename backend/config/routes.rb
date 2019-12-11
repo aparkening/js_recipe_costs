@@ -2,29 +2,30 @@ Rails.application.routes.draw do
   # Root
   root 'application#index'
 
-  devise_for :users,
-              path: '',
-              path_names: {
-                sign_in: 'login',
-                sign_out: 'logout',
-                registration: 'signup'
-              },
-              controllers: {
-                sessions: 'sessions',
-                registrations: 'users'
-              }
-
   namespace :api do
     namespace :v1 do
 
-    # Ingredients
-    resources :ingredients
-    post 'ingredients/import'
+      # Ingredients
+      resources :ingredients
+      post 'ingredients/import'
 
-    # Session
-    # get '/login' => 'sessions#new'
-    # post '/login' => 'sessions#create'
-    # get '/logout' => 'sessions#destroy'
+      # Session
+      # get '/login' => 'sessions#new'
+      # post '/login' => 'sessions#create'
+      # get '/logout' => 'sessions#destroy'
+
+      # Use devise for sessions and registration
+      devise_for :users,
+                  path: '',
+                  path_names: {
+                    sign_in: 'login',
+                    sign_out: 'logout',
+                    registration: 'signup'
+                  },
+                  controllers: {
+                    sessions: 'sessions',
+                    registrations: 'registrations'
+                  }
 
       # Users, with recipes and user_ingredients
       resources :users do
