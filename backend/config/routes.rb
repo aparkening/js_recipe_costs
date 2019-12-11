@@ -9,12 +9,20 @@ Rails.application.routes.draw do
       resources :ingredients
       post 'ingredients/import'
 
+      # Users, with recipes and user_ingredients
+      resources :users do
+        resources :recipes
+        get 'recipes/ingredients/:id' => 'recipes#by_ingredient', as: "recipes_by_ingredient"
+        post 'recipes/import'
+        resources :ingredients, controller: 'user_ingredient_costs'
+      end
+
       # Session
       # get '/login' => 'sessions#new'
       # post '/login' => 'sessions#create'
       # get '/logout' => 'sessions#destroy'
 
-      # Use devise for sessions and registration
+      # Use Devise for sessions and registration
       devise_for :users,
                   path: '',
                   path_names: {
@@ -26,15 +34,6 @@ Rails.application.routes.draw do
                     sessions: 'sessions',
                     registrations: 'registrations'
                   }
-
-      # Users, with recipes and user_ingredients
-      resources :users do
-        resources :recipes
-        get 'recipes/ingredients/:id' => 'recipes#by_ingredient', as: "recipes_by_ingredient"
-        post 'recipes/import'
-        resources :ingredients, controller: 'user_ingredient_costs'
-      end
-
     end
   end
 
