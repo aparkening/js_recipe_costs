@@ -24,8 +24,8 @@ Rails.application.routes.draw do
                     registration: 'signup'
                   },
                   controllers: {
-                    sessions: 'sessions',
-                    registrations: 'registrations'
+                    sessions: 'api/v1/sessions',
+                    registrations: 'api/v1/registrations' 
                   }
 
       # Users, with recipes and user_ingredients
