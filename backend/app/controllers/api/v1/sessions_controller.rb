@@ -48,7 +48,7 @@ class Api::V1::SessionsController < Devise::SessionsController
   end
 
   def respond_to_on_destroy
-    head: no_content
+    head :no_content
   end
 
 
