@@ -9,9 +9,9 @@ class ApplicationController < ActionController::API
   end
 
   # Render json or throw errors
-  def render_resource(resource)
+  def render_resource(resource, with: nil)
     if resource.errors.empty?
-      render json: resource
+      render json: resource, include: with
     else
       validation_error(resource)
     end
@@ -32,7 +32,7 @@ class ApplicationController < ActionController::API
   end
 
   def authorize_owner_resource(resource)
-    raise AuthorizationError.new if resource.owner != current_user
+    raise AuthorizationError.new if resource.user != current_user
   end
 
   def unauthorized_error
