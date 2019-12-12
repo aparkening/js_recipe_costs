@@ -1,6 +1,7 @@
 class Api::V1::IngredientsController < ApplicationController
   # before_action :require_admin, only: [:import]
   # before_action :set_user
+  before_action :authenticate_user!
 
   # All records
   def index

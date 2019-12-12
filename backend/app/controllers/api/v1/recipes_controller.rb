@@ -1,5 +1,6 @@
 class Api::V1::RecipesController < ApplicationController
   # before_action :require_login
+  before_action :authenticate_user!
 
   # All records
   def index
@@ -15,8 +16,11 @@ class Api::V1::RecipesController < ApplicationController
 	# 	    @recipes = Recipe.where('name LIKE ?', "%#{params[:search]}%").order('id DESC')
   #     end
   #   else
-  #     redirect_non_users      
-      user = User.find_by(id: params[:user_id])
+  #     redirect_non_users     
+  
+  
+      # user = User.find_by(id: params[:user_id])
+      user = current_user
 
       if params[:search]
         # If search, find results
