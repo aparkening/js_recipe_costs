@@ -45,11 +45,11 @@ group :development, :test do
   # Env file
   gem 'dotenv-rails'
 
-  # Debugging
+  # Debug
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
 
-  # Testing via Rspec
+  # Test with Rspec
   gem 'rspec-rails'
 end
 
