@@ -5,25 +5,25 @@
 ### Build seeds
 
 # Users
-admin = User.create(name: "David Baker", password: "testing123", password_confirmation: "testing123", admin: "true", organization: "The Culinary Institute of America")
+admin = User.create(name: "David Baker", password: "testing123", password_confirmation: "testing123", admin: "true", organization: "The Culinary Institute of America", email: "david@testing.com")
 
-paul = User.create(name: "Paul Hollywood", password: "testing123", password_confirmation: "testing123", organization: "Great British Bake Off")
+paul = User.create(name: "Paul Hollywood", password: "testing123", password_confirmation: "testing123", organization: "Great British Bake Off", email: "paul@testing.com")
 
-prue = User.create(name: "Prue Leith", password: "testing123", password_confirmation: "testing123", organization: "Great British Bake Off")
+prue = User.create(name: "Prue Leith", password: "testing123", password_confirmation: "testing123", organization: "Great British Bake Off", email: "prue@testing.com")
 
-mary = User.create(name: "Mary Berry", password: "testing123", password_confirmation: "testing123", organization: "Great British Bake Off")
+mary = User.create(name: "Mary Berry", password: "testing123", password_confirmation: "testing123", organization: "Great British Bake Off", email: "mary@testing.com")
 
-morimoto = User.create(name: "Masaharu Morimoto", password: "testing123", password_confirmation: "testing123", organization: "Morimoto's")
+morimoto = User.create(name: "Masaharu Morimoto", password: "testing123", password_confirmation: "testing123", organization: "Morimoto's", email: "morimoto@testing.com")
 
-jamie = User.create(name: "Jamie Oliver", password: "testing123", password_confirmation: "testing123")
+jamie = User.create(name: "Jamie Oliver", password: "testing123", password_confirmation: "testing123", email: "jamie@testing.com")
 
-nigel = User.create(name: "Nigel Slater", password: "testing123", password_confirmation: "testing123")
+nigel = User.create(name: "Nigel Slater", password: "testing123", password_confirmation: "testing123", email: "nigel@testing.com")
 
-harold = User.create(name: "Harold McGee", password: "testing123", password_confirmation: "testing123")
+harold = User.create(name: "Harold McGee", password: "testing123", password_confirmation: "testing123", email: "harold@testing.com")
 
-rosie = User.create(name: "Judy Rosenberg", password: "testing123", password_confirmation: "testing123", organization: "Rosie's Bakery")
+rosie = User.create(name: "Judy Rosenberg", password: "testing123", password_confirmation: "testing123", organization: "Rosie's Bakery", email: "rosie@testing.com")
 
-peter = User.create(name: "Peter Reinhart", password: "testing123", password_confirmation: "testing123", organization: "Johnson and Wales University")
+peter = User.create(name: "Peter Reinhart", password: "testing123", password_confirmation: "testing123", organization: "Johnson and Wales University", email: "peter@testing.com")
 
 
 # Recipes
