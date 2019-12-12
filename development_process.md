@@ -16,30 +16,31 @@ This project will be a single page application that uses with my Flatiron Ruby o
 - App-wide ingredients and default costs provide faster recipe creation, and users can customize ingredient prices for their own recipes.
 - Users can browse their full recipe list or recipes by ingredient.
 
+## 2. Outline project structure
+
 ### Screens
 - Welcome
-- Signup
-- Login
+- Signup (New User)
+- Login (New Session)
 - User Dashboard
-- All Recipes w/ Delete & Edit
-	- Search Recipes subset of All
+- Edit User Account
+- All User Recipes w/ Delete & Edit
+	- Search Recipes subset of All User Recipes
 	- Add/Edit Recipe
 	- Import Recipe via CSV
 	- Read Recipe w/ Delete & Edit
-- All Ingredient Costs w/ Delete & Edit
+	- Admin access to all recipes
+- All User Ingredient Costs w/ Delete & Edit
 	- Add/Edit Custom Cost
 	- Import 
-- Edit Account
 
-#### Admin
+#### Admin Screens
+- Access to all recipes
 - All Ingredients w/ Delete & Edit
 	- Add/Edit Ingredient
+	- Import
 - All Users w/ Delete & Edit
 	- Edit User
-
-
-## 2. Outline project structure
-
 
 
 
