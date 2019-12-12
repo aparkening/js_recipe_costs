@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # Root
   root 'application#index'
 
@@ -8,14 +9,6 @@ Rails.application.routes.draw do
       # Ingredients
       resources :ingredients
       post 'ingredients/import'
-
-      # Users, with recipes and user_ingredients
-      resources :users do
-        resources :recipes
-        get 'recipes/ingredients/:id' => 'recipes#by_ingredient', as: "recipes_by_ingredient"
-        post 'recipes/import'
-        resources :ingredients, controller: 'user_ingredient_costs'
-      end
 
       # Session
       # get '/login' => 'sessions#new'
@@ -34,6 +27,14 @@ Rails.application.routes.draw do
                     sessions: 'sessions',
                     registrations: 'registrations'
                   }
+
+      # Users, with recipes and user_ingredients
+      resources :users do
+        resources :recipes
+        get 'recipes/ingredients/:id' => 'recipes#by_ingredient', as: "recipes_by_ingredient"
+        post 'recipes/import'
+        resources :ingredients, controller: 'user_ingredient_costs'
+      end
     end
   end
 
