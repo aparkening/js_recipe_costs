@@ -32,7 +32,7 @@ class ApplicationController < ActionController::API
   end
 
   def authorize_owner_resource(resource)
-    raise AuthorizationError.new if resource.owner != current_owner
+    raise AuthorizationError.new if resource.owner != current_user
   end
 
   def unauthorized_error
