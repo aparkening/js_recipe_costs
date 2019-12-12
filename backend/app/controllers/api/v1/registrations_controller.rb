@@ -1,4 +1,4 @@
-class Api::V1::RegistrationsController < Devise::SessionsController
+class Api::V1::RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
   # Add additional functionality to Devise default new registration
