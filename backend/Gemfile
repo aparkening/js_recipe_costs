@@ -51,6 +51,10 @@ group :development, :test do
 
   # Test with Rspec
   gem 'rspec-rails'
+
+  # Fabricate test data
+  gem 'fabrication'
+  gem 'faker'
 end
 
 group :development do
