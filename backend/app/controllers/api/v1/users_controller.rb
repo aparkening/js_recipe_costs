@@ -15,9 +15,9 @@ class Api::V1::UsersController < ApplicationController
 
   # Display user page
   def show
-    redirect_non_users
+    # redirect_non_users
     @user = User.find(params[:id])
-    require_authorization(@user)
+    # require_authorization(@user)
 
     # Get all ingredients used by user
     @ingredients = @user.recipes.all_ingredients
