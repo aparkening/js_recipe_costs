@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  # has_secure_password
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # devise :database_authenticatable, :registerable,
@@ -7,20 +9,15 @@ class User < ApplicationRecord
   devise :database_authenticatable,
         :registerable,
         :jwt_authenticatable,
-        jwt_revocation_strategy: JWTBlacklist
-
-  # has_secure_password
+        jwt_revocation_strategy: JwtBlacklist
 
   # Relationships
   has_many :recipes
   has_many :user_ingredient_costs
   has_many :ingredients, through: :user_ingredient_costs
-
-
   # Remove recipes and user ingredient costs if user is deleted
   # has_many :recipes, dependent: :destroy
   # has_many :user_ingredient_costs, dependent: :destroy
-
   
   # Validations
   validates :name, presence: true, uniqueness: true
