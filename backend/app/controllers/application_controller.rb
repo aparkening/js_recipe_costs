@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::API
   respond_to :json
 
+
+  def index
+    render json: { message: "Welcome Home!" }
+  end
+
+
+
   def render_resource(resource)
     if resource.errors.empty?
       render json: resource
