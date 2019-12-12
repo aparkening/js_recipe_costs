@@ -1,29 +1,23 @@
-class Api::V1::SessionsController < ApplicationController
+class Api::V1::SessionsController < Devise::SessionsController
+  respond_to :json
 
-  # # Display login form
-  def new
-    # @user = User.new
+  # # Create session
+  # def create
+  #   # user = User.find_by(name: params[:name])
+  #   # if user && user.authenticate(params[:password])
+  #   #   session[:user_id] = user.id
+  #   #   # redirect_to user_path(@user)
+  #   #   render json: {userID: user.id}, set_cookie: 'test', status: 200
+  #   # else
+  #   #   render json: { message: 'User error' }, status: 401
+  #   # end
+  # end
 
-    render json: { message: 'New User' }, status: 200
-  end
-
-  # Create session
-  def create
-    user = User.find_by(name: params[:name])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      # redirect_to user_path(@user)
-      render json: {user: user.id}, status: 200
-    else
-      render json: { message: 'User error' }, status: 401
-    end
-  end
-
-  # Log user out
-  def destroy
-    session.clear
-    render json: {message: 'Logged Out'}, status: 200
-  end
+  # # Log user out
+  # def destroy
+  #   session.clear
+  #   render json: {message: 'Logged Out'}, status: 200
+  # end
 
   # Google Oauth Login
   def googleAuth
@@ -48,6 +42,27 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   private
+
+  def respond_with(resource, _opts = {})
+    render json: resource
+  end
+
+  def respond_to_on_destroy
+    head: no_content
+  end
+
+
+
+  # def csrf_token
+  #   if request.headers["X-HANDSHAKE-TOKEN"] == ENV['X-HANDSHAKE-TOKEN']
+  #       token = form_authenticity_token
+  #       session[:csrf] = token
+  #       render json: JSON.generate({csrfToken: token, logged_in: logged_in?})
+  #   else
+  #       render json: JSON.generate({errors: "handshake failed"})
+  #   end
+  # end
+
 
   def auth
     request.env['omniauth.auth']
