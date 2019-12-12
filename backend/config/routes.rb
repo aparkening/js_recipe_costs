@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       # get '/logout' => 'sessions#destroy'
 
       # Use Devise for sessions and registration
-      devise_for :users, defaults: { format: :json },
+      devise_for :users,
                   path: '',
                   path_names: {
                     sign_in: 'login',
