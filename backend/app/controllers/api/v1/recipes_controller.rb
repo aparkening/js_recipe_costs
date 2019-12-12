@@ -19,8 +19,8 @@ class Api::V1::RecipesController < ApplicationController
   #     redirect_non_users     
   
   
-      # user = User.find_by(id: params[:user_id])
-      user = current_user
+      user = User.find_by(id: params[:user_id])
+      # user = current_user
 
       if params[:search]
         # If search, find results
@@ -85,7 +85,7 @@ class Api::V1::RecipesController < ApplicationController
   def show
     # redirect_non_users
     user = User.find_by(id: params[:user_id])
-    
+  
     # Require authorization
     # require_authorization(@user)
 
@@ -98,6 +98,9 @@ class Api::V1::RecipesController < ApplicationController
 
     # If recipe exists, iterate through ingredients to calculate each cost and combine into total cost and cost per serving.
     if recipe
+
+      authorize_owner_resource(recipe)
+
       # Map costs for each ingredient
       @recipe_ingredients = recipe.recipe_ingredients.map { |ingredient| CombinedIngredient.new(ingredient) }
 
